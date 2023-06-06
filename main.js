@@ -175,7 +175,16 @@ function fillTableLine(lineElement, ind1, ind2, fillDigit="", unitInd="left"){
 
 function hintTable(n=0){
     const tab = document.querySelector("table")
-    tab.innerHTML += '<tr id="prefs"></tr><tr id="digitBoxes"></tr>'
+
+    tab.innerHTML = ""
+
+    var row0 = tab.insertRow(0)
+    row0.id = "prefs"
+    var row1 = tab.insertRow(1)
+    row1.id = "digitBoxes"
+
+    
+    //tab.innerHTML += '<tr id="prefs"></tr><tr id="digitBoxes"></tr>'
 
     const prefsline = document.querySelector("tr#prefs")
     const boxesline = document.querySelector("tr#digitBoxes")
@@ -209,8 +218,10 @@ function hintTable(n=0){
     fillTableLine(boxesline, ind1, ind2)
    
     if (n>0){
-        tab.innerHTML += '<tr id="solDigits"></tr>'
-        const solline = document.querySelector("tr#solDigits")
+        var row2 = tab.insertRow(2) 
+        row2.id = "solDigits"  
+        //tab.innerHTML += '<tr id="solDigits"></tr>'
+        const solline = row2 //document.querySelector("tr#solDigits")
         fillTableLine(solline, ind1, ind2, fillDigit="0", unitInd="right")
     }
 
